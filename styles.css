@@ -23,10 +23,16 @@ Secondary Colors:
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align content to the top */
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #FFF7E1; /* Cream background */
     font-family: Arial, sans-serif;
+    padding: 20px 0; /* Add padding at the top and bottom */
+}
+
+.cw-logo {
+    width: 300px; /* 2x the original size */
+    margin: 10px 0; /* Adjust spacing above and below the logo */
 }
 
 .game-wrapper {
@@ -34,6 +40,10 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    background-color: #FED8C1; /* Light Orange background for the game wrapper */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
 }
 
 .score-panel {
@@ -42,26 +52,32 @@ body {
     align-items: center;
     width: 800px;
     padding: 10px;
-    background-color: #fff;
+    background-color: #FFF7E1; /* Cream background for the score panel */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timer {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1A1A1A; /* Black text */
+    margin-left: 20px;
 }
 
 #game-container {
     width: 800px;
     height: 600px;
-    background-color: #e6f7ff;
-    border: 2px solid #333;
+    background-color: #77A8BB; /* Light Blue background for the game area */
+    border: 2px solid #003366; /* Dark Blue border */
     border-radius: 8px;
     position: relative;
     overflow: hidden;
 }
 
-
 #start-btn {
     padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #FFC907; /* Yellow button */
+    color: #1A1A1A; /* Black text */
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -69,21 +85,54 @@ body {
 }
 
 #start-btn:hover {
-    background-color: #45a049;
+    background-color: #BF6C46; /* Dark Orange on hover */
+}
+
+#reset-btn {
+    padding: 8px 16px;
+    background-color: #CBCCD1; /* Grey button */
+    color: #1A1A1A; /* Black text */
+    border: none;
+    border-radius: 4px; /* Same rounded edges as start button */
+    cursor: pointer;
+    font-size: 16px;
+    height: 40px; /* Match height of start button */
+    width: auto; /* Match width of start button */
+}
+
+#reset-btn:hover {
+    background-color: #BF6C46; /* Dark Orange on hover */
+}
+
+#difficulty-select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #003366; /* Dark Blue border */
+    border-radius: 4px;
+    background-color: #8BD1CB; /* Light Blue background for differentiation */
+    color: #1A1A1A; /* Black text */
+    cursor: pointer;
+    margin-left: 10px; /* Add spacing between elements */
+}
+
+#difficulty-select:focus {
+    outline: none;
+    border-color: #FED8C1; /* Light Orange border on focus */
 }
 
 .score {
     flex: 0 1 auto;  /* Don't grow, can shrink, auto basis */
     font-size: 24px;
     font-weight: bold;
+    color: #1A1A1A; /* Black text */
 }
 
 .water-drop {
     position: absolute;
-    width: 40px;  /* increased from 30px */
-    height: 40px; /* increased from 30px */
-    background-color: #0099ff;
-    border-radius: 50% 50% 50% 50%;
+    width: 100px; /* Increased from 40px */
+    height: 100px; /* Increased from 40px */
+    background-size: cover; /* Ensure the image fills the drop */
+    border-radius: 50%; /* Keep the circular shape */
     animation: dropFall linear forwards;
     transform-origin: center;
     cursor: pointer;
@@ -91,11 +140,11 @@ body {
 }
 
 .bad-drop {
-    background-color: #ff4444;
+    /* No additional styles needed; background image is set dynamically */
 }
 
 .game-title {
-    color: #131313;
+    color: #003366; /* Dark Blue text */
     font-size: 48px;
     margin-top: 0;
     margin-bottom: 5px;  /* reduced from 20px */
@@ -103,10 +152,84 @@ body {
 }
 
 .game-tagline {
-    color: #666;
+    color: #1A1A1A; /* Black text */
     font-size: 18px;
     margin-bottom: 20px;
     text-align: center;
+}
+
+#message-display {
+    display: none; /* Hide by default */
+    flex-direction: column; /* Display content vertically */
+    justify-content: flex-start; /* Align text to the top for more room */
+    align-items: center;
+    text-align: center;
+    font-size: 20px; /* Larger font size for better visibility */
+    font-weight: bold;
+    color: #1A1A1A; /* Black text */
+    background-color: #FFF7E1; /* Cream background for contrast */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for emphasis */
+    position: absolute; /* Position it over the game container */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensure it fills the game container */
+    height: 100%; /* Ensure it fills the game container */
+    box-sizing: border-box; /* Include padding in dimensions */
+    z-index: 10; /* Ensure it appears above drops */
+    overflow-y: auto; /* Add scrolling if content overflows */
+}
+
+#message-display.active {
+    display: flex; /* Show only when active */
+}
+
+#message-display ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 10px 0;
+}
+
+#message-display p {
+    margin: 10px 0; /* Add spacing between paragraphs */
+    font-size: 18px; /* Ensure paragraph is visible on small screens */
+    line-height: 1.5; /* Improve readability */
+}
+
+/* Adjust layout for small screens */
+@media (max-width: 500px) {
+    #message-display {
+        flex-direction: column; /* Ensure vertical layout for small screens */
+        justify-content: flex-start; /* Align text to the top for more room */
+        font-size: 16px; /* Slightly smaller font size */
+        padding: 10px;
+        height: auto; /* Allow the message to expand dynamically */
+        max-height: 100%; /* Prevent overflow beyond the container */
+    }
+
+    #game-container {
+        height: auto; /* Allow the game container to expand dynamically */
+        min-height: 70vh; /* Ensure a minimum height for the game container */
+    }
+
+    #message-display p {
+        font-size: 14px; /* Further reduce font size for small screens */
+        line-height: 1.4; /* Maintain readability */
+    }
+
+    #message-display p, #message-display ul {
+        margin: 5px; /* Reduce spacing for small screens */
+    }
+
+    .timer {
+        margin-bottom: 10px; /* Add spacing between timer and difficulty selector */
+    }
+
+    #game-container {
+        height: 70vh; /* Expand game container to accommodate the message */
+    }
 }
 
 @keyframes dropFall {
@@ -125,5 +248,81 @@ body {
     
     #game-container {
         height: 70vh;
+    }
+
+    .game-wrapper {
+        gap: 15px; /* Reduce spacing between elements */
+    }
+
+    .score-panel {
+        flex-direction: column; /* Stack score, timer, and buttons vertically */
+        align-items: center;
+        width: 90%; /* Adjust width to fit smaller screens */
+        padding: 10px;
+    }
+
+    .timer {
+        margin-left: 0; /* Remove left margin for better centering */
+        margin-top: 10px; /* Add spacing between elements */
+    }
+
+    #game-container {
+        width: 90%; /* Adjust width to fit smaller screens */
+        height: 60vh; /* Use a percentage height for better responsiveness */
+    }
+
+    #start-btn, #reset-btn {
+        width: 100%; /* Make buttons full width */
+        margin-top: 10px; /* Add spacing between buttons */
+    }
+
+    .water-drop {
+        width: 80px; /* Slightly smaller drops for smaller screens */
+        height: 80px;
+    }
+
+    .game-title {
+        font-size: 36px; /* Reduce title size */
+    }
+
+    .game-tagline {
+        font-size: 16px; /* Reduce tagline size */
+    }
+
+    #message-display {
+        font-size: 18px; /* Slightly smaller font for medium screens */
+        padding: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    .game-wrapper {
+        gap: 10px; /* Further reduce spacing */
+    }
+
+    .score-panel {
+        padding: 8px; /* Reduce padding */
+    }
+
+    #game-container {
+        height: 50vh; /* Further reduce height for very small screens */
+    }
+
+    .water-drop {
+        width: 60px; /* Further reduce drop size */
+        height: 60px;
+    }
+
+    .game-title {
+        font-size: 28px; /* Further reduce title size */
+    }
+
+    .game-tagline {
+        font-size: 14px; /* Further reduce tagline size */
+    }
+
+    #message-display {
+        font-size: 16px; /* Further reduce font size for small screens */
+        padding: 10px;
     }
 }
