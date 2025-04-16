@@ -161,8 +161,8 @@ body {
 #message-display {
     display: none; /* Hide by default */
     flex-direction: column; /* Display content vertically */
-    justify-content: flex-start; /* Align text to the top for more room */
-    align-items: center;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
     text-align: center;
     font-size: 20px; /* Larger font size for better visibility */
     font-weight: bold;
@@ -173,10 +173,12 @@ body {
     margin: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for emphasis */
     position: absolute; /* Position it over the game container */
-    top: 0;
-    left: 0;
-    width: 100%; /* Ensure it fills the game container */
-    height: 100%; /* Ensure it fills the game container */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for centering */
+    width: 90%; /* Ensure it fits within the game container */
+    max-width: 800px; /* Limit maximum width */
+    max-height: 90%; /* Prevent overflow */
     box-sizing: border-box; /* Include padding in dimensions */
     z-index: 10; /* Ensure it appears above drops */
     overflow-y: auto; /* Add scrolling if content overflows */
@@ -201,12 +203,10 @@ body {
 /* Adjust layout for small screens */
 @media (max-width: 500px) {
     #message-display {
-        flex-direction: column; /* Ensure vertical layout for small screens */
-        justify-content: flex-start; /* Align text to the top for more room */
         font-size: 16px; /* Slightly smaller font size */
-        padding: 10px;
-        height: auto; /* Allow the message to expand dynamically */
-        max-height: 100%; /* Prevent overflow beyond the container */
+        padding: 15px; /* Adjust padding */
+        width: 95%; /* Use more of the screen width */
+        max-height: 80%; /* Reduce height to prevent overflow */
     }
 
     #game-container {
