@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <li>Bad drops caught: ${badDropsCaught} (-${pointsLostFromBadDrops} points)</li>
             </ul>
             <p>Your final score is: ${score}</p>
-            <p>Charity:water is a nonprofit organization dedicated to bringing clean and safe drinking water to people in developing countries. Access to clean water transforms lives by improving health, enabling education, and fostering economic growth. In your game, the good water drops symbolizes the positive impact of clean water, while the bad drops reflects the challenges of unsafe water. Everyone deserves access to clean water—it’s a fundamental need that fuels brighter futures.</p>
+            <p>Charity:water is a nonprofit dedicated to bringing clean and safe drinking water to people in developing countries. Access to clean water transforms lives by improving health, enabling education, and fostering economic growth. In your game, the good water drops symbolizes the positive impact of clean water, while the bad drops reflects the challenges of unsafe water. Everyone deserves access to clean water—it’s a fundamental need that fuels brighter futures.</p>
         `;
         messageDisplay.classList.add('active'); // Show the message display
 
