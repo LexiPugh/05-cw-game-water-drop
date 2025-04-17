@@ -31,8 +31,8 @@ Here’s what you're required to implement to bring the game to life:
 - **Display a message when the game ends**
   - If the player scores **20 or more points**, show a **winning** message  
   - If the player scores **less than 20 points**, show a **"try again"** message  
-  - Store multiple possible messages for both winning and losing in an array  
-  - Pick a random message from the array to display each time  
+  - Create one array of possible winning messages and one array of losing messages
+  - Depending on whether the user wins or loses, randomly pick and display a message from the appropriate array
 
 ### Visual Styling
 
