@@ -137,6 +137,7 @@ body {
     transform-origin: center;
     cursor: pointer;
     pointer-events: auto;
+    z-index: 5;
 }
 
 .bad-drop {
@@ -325,4 +326,8 @@ body {
         font-size: 16px; /* Further reduce font size for small screens */
         padding: 10px;
     }
+}
+
+#message-display {
+  display: none;
 }
